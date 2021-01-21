@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class TrackingCamera : MonoBehaviour
 {
-    [SerializeField] Transform _yoba;
+    [SerializeField] private Transform _yobaPosition;
 
     void Update()
     {
-        transform.position = new Vector3(transform.position.x, _yoba.transform.position.y, transform.position.z);
+        transform.position = new Vector3(transform.position.x, _yobaPosition.transform.position.y, transform.position.z);
     }
 }

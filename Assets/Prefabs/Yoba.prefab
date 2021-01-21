@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 8461079273390145389}
   - component: {fileID: 8461079273390145377}
   - component: {fileID: 8928313176839014661}
+  - component: {fileID: 755311774}
   m_Layer: 0
   m_Name: Yoba
   m_TagString: Untagged
@@ -139,9 +140,14 @@ MonoBehaviour:
   _moveSpeed: 2
   _jumpEnergyView: {fileID: 0}
   _coinsView: {fileID: 0}
-  _image: {fileID: 0}
-  _isGrounded: 0
+  _image: {fileID: 6881659769471532189}
   _animator: {fileID: 8928313176839014661}
+  _health:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   CoinCollected:
     m_PersistentCalls:
       m_Calls:
@@ -156,11 +162,11 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  SitOnChair:
+  YobaIsDead:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 8461079273390145377}
-        m_MethodName: OnSitOnChair
+        m_MethodName: OnYobaIsDead
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -189,3 +195,17 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &755311774
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8461079273390145388}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 366f50cd6ccce294188001155c78f664, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _animator: {fileID: 8928313176839014661}
+  _isGrounded: 0

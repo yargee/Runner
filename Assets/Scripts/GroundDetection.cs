@@ -1,16 +1,22 @@
 ﻿using UnityEngine;
 
+[RequireComponent(typeof(Animator))]
 public class GroundDetection : MonoBehaviour
 {
-    [SerializeField] Animator _animator;
-    [SerializeField] bool _isGrounded = false;
+    [SerializeField] private Animator _animator;
+    private bool _isGrounded = false;
+
+    private void GroundDetectionSwitcher( bool value)
+    {
+        _isGrounded = value;
+        _animator.SetBool("IsGrounded", value);
+    }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.TryGetComponent(out Platform platform))
         {
-            _isGrounded = true;
-            _animator.SetBool("IsGrounded", true);
+            GroundDetectionSwitcher(true);
         }
     }
 
@@ -18,8 +24,7 @@ public class GroundDetection : MonoBehaviour
     {
         if (collision.gameObject.TryGetComponent(out Platform platform))
         {
-            _isGrounded = false;
-            _animator.SetBool("IsGrounded", false);
+            GroundDetectionSwitcher(false);
         }
     }
 }
