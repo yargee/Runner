@@ -6,13 +6,13 @@ using UnityEngine.SceneManagement;
 
 public class Menu : MonoBehaviour
 {
-    public void Quit()
-    {
-        Application.Quit();
-    }
-
-    public void StartGame()
+    private void StartGame()
     {
         SceneManager.LoadScene("Game");
+    }
+
+    private void Quit()
+    {
+        Application.Quit();
     }
 }

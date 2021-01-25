@@ -9,6 +9,18 @@ public class PlatformGenerator : MonoBehaviour
     [SerializeField] private PlatformDeactivator _triggerZone;
     private Platform _platformToDeactivate;
 
+    private void OnEnable()
+    {
+        _triggerZone.NeedNewPlatform += OnNeedNewPlatform;
+        _triggerZone.DeactivatePlatform += OnDeactivatePlatform;
+    }
+
+    private void OnDisable()
+    {
+        _triggerZone.NeedNewPlatform -= OnNeedNewPlatform;
+        _triggerZone.DeactivatePlatform -= OnDeactivatePlatform;
+    }
+
     public void OnNeedNewPlatform()
     {
         int nextIndex = Random.Range(0, _platformsPool.Count);
@@ -25,17 +37,5 @@ public class PlatformGenerator : MonoBehaviour
         _platformToDeactivate.gameObject.SetActive(false);
         _platformToDeactivate.transform.position = transform.position;
         _platformsPool.Add(_platformToDeactivate);
-    }
-
-    private void OnEnable()
-    {
-        _triggerZone.NeedNewPlatform += OnNeedNewPlatform;
-        _triggerZone.DeactivatePlatform += OnDeactivatePlatform;
-    }
-
-    private void OnDisable()
-    {
-        _triggerZone.NeedNewPlatform -= OnNeedNewPlatform;
-        _triggerZone.DeactivatePlatform -= OnDeactivatePlatform;
-    }
+    }    
 }

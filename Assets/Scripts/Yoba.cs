@@ -6,6 +6,7 @@ using UnityEngine.UI;
 [RequireComponent(typeof(Animator))]
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(SpriteRenderer))]
+
 public class Yoba : MonoBehaviour
 {
     [SerializeField] private Rigidbody2D _rigidbody;
@@ -23,12 +24,6 @@ public class Yoba : MonoBehaviour
     private int _coins = 0;
     public event UnityAction YobaIsDead;
 
-    public void OnYobaIsDead()
-    {
-        _coins = 0;
-        Time.timeScale = 0;
-    }
-
     private void OnEnable()
     {
         YobaIsDead += OnYobaIsDead;
@@ -37,6 +32,30 @@ public class Yoba : MonoBehaviour
     private void OnDisable()
     {
         YobaIsDead -= OnYobaIsDead;
+    }
+
+
+    void Update()
+    {
+        if (transform.position.y < _deathChecker.transform.position.y)
+        {
+            YobaIsDead?.Invoke();
+        }
+
+        if (_jumpEnergy <= 10)
+        {
+            _jumpEnergy += Time.deltaTime * 1.5f;
+            _jumpEnergyView.value = _jumpEnergy;
+        }
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            if (_jumpEnergy >= 1.5f)
+            {
+                _rigidbody.AddForce(_jumpDirection * _jumpForce, ForceMode2D.Impulse);
+                _jumpEnergy -= 1.5f;
+            }
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -68,26 +87,9 @@ public class Yoba : MonoBehaviour
         }
     }
 
-    void Update()
+    public void OnYobaIsDead()
     {
-        if (transform.position.y < _deathChecker.transform.position.y)
-        {
-            YobaIsDead?.Invoke();
-        }
-
-        if (_jumpEnergy <= 10)
-        {
-            _jumpEnergy += Time.deltaTime * 1.5f;
-            _jumpEnergyView.value = _jumpEnergy;
-        }
-
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            if (_jumpEnergy >= 1.5f)
-            {
-                _rigidbody.AddForce(_jumpDirection * _jumpForce, ForceMode2D.Impulse);
-                _jumpEnergy -= 1.5f;
-            }
-        }
+        _coins = 0;
+        Time.timeScale = 0;
     }
 }

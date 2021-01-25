@@ -25,8 +25,7 @@ public class Platform : MonoBehaviour
         foreach (Coin coin in _topCoinsPool)
         {
             var isEnabled = Random.Range(0, 2) == 1 ? true : false;
-            coin.gameObject.SetActive(isEnabled);
-            coin.transform.position = new Vector2(coin.transform.position.x, coin.transform.position.y);
+            coin.gameObject.SetActive(isEnabled);            
         }
 
         foreach (Coin coin in _bottomCoinsPool)
