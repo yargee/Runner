@@ -1,41 +1,30 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
 
 [RequireComponent(typeof(SpriteRenderer))]
 public class Platform : MonoBehaviour
 {
-    [SerializeField] private float _moveSpeed;
     [SerializeField] private SpriteRenderer _color;
     [SerializeField] private List<Chair> _chairs;
-    [SerializeField] private List<Coin> _topCoinsPool;
-    [SerializeField] private List<Coin> _bottomCoinsPool;
+    [SerializeField] private List<Coin> _coins;
 
     private void OnEnable()
     {
-        _color.color = new Color32((byte)Random.Range(0, 255), (byte)Random.Range(0, 255), (byte)Random.Range(0, 255), 255);
-
-        foreach (Chair chair in _chairs)
-        {
-            var isEnabled = Random.Range(0, 2) == 1 ? true : false;
-            chair.gameObject.SetActive(isEnabled);
-        }
-
-        foreach (Coin coin in _topCoinsPool)
-        {
-            var isEnabled = Random.Range(0, 2) == 1 ? true : false;
-            coin.gameObject.SetActive(isEnabled);            
-        }
-
-        foreach (Coin coin in _bottomCoinsPool)
-        {
-            coin.gameObject.SetActive(true);
-        }
+        _color.color = Random.ColorHSV();
+        SetObjectsOnPlatform(_chairs);
+        SetObjectsOnPlatform(_coins);
     }
 
-    private void Update()
+    public void Selfdestruct()
     {
-        transform.Translate(Vector2.left * Time.deltaTime * _moveSpeed);
+        Destroy(gameObject);
+    }
+
+    private void SetObjectsOnPlatform(IEnumerable<IPlatformSettable> list)
+    {
+        foreach (var item in list)
+        {
+            item.TrySetActive();
+        }
     }
 }

@@ -1,8 +1,15 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.Events;
+﻿using UnityEngine;
 
-public class Coin : MonoBehaviour
-{    
+public class Coin : MonoBehaviour, IPlatformSettable
+{
+    private void OnEnable()
+    {        
+        TrySetActive();
+    }
+
+    public void TrySetActive()
+    {
+        var isEnabled = Random.Range(0, 2) == 1 ? true : false;
+        gameObject.SetActive(isEnabled);
+    }
 }

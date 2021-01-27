@@ -54,7 +54,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &3285847797994280716
 Transform:
   m_ObjectHideFlags: 0
@@ -136,11 +136,11 @@ MonoBehaviour:
   _moveSpeed: 8
   _color: {fileID: 3285847797994280717}
   _chairs:
-  - {fileID: 982559789416638660}
-  - {fileID: 7810950679127974496}
   - {fileID: 8345992697782970617}
   - {fileID: 4648989648038093847}
-  _topCoinsPool:
+  - {fileID: 982559789416638660}
+  - {fileID: 7810950679127974496}
+  _coins:
   - {fileID: 5411440706269739024}
   - {fileID: 4685571845705222322}
   - {fileID: 1156695411913133959}
@@ -156,7 +156,6 @@ MonoBehaviour:
   - {fileID: 4760819052068821108}
   - {fileID: 7432367476792935973}
   - {fileID: 1949074596418766430}
-  _bottomCoinsPool:
   - {fileID: 5185163261676820329}
   - {fileID: 4314030853754487441}
   - {fileID: 4544198759214678911}

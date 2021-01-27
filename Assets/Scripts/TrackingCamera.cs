@@ -1,13 +1,12 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class TrackingCamera : MonoBehaviour
 {
     [SerializeField] private Transform _yobaPosition;
+    private int _offset = 5;
 
-    void Update()
+    private void Update()
     {
-        transform.position = new Vector3(transform.position.x, _yobaPosition.transform.position.y, transform.position.z);
+        transform.position = new Vector3(_yobaPosition.position.x + _offset, _yobaPosition.position.y, transform.position.z);
     }
 }
