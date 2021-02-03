@@ -1,0 +1,45 @@
+{
+    "name": "YobaInput",
+    "maps": [
+        {
+            "name": "Yoba",
+            "id": "b1198cb2-2303-4d24-86c9-99e9ff188cf3",
+            "actions": [
+                {
+                    "name": "Jump",
+                    "type": "Button",
+                    "id": "843e91e2-d62f-4bf3-bfe3-0ed8a29376f8",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "6a616a97-23f5-4e83-bdd7-7f3c91513382",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "YobaInput",
+                    "action": "Jump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": [
+        {
+            "name": "YobaInput",
+            "bindingGroup": "YobaInput",
+            "devices": [
+                {
+                    "devicePath": "<Keyboard>",
+                    "isOptional": false,
+                    "isOR": false
+                }
+            ]
+        }
+    ]
+}

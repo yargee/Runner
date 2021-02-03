@@ -133,8 +133,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0f265d6f0b3ef040b9a7ad1049217cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _moveSpeed: 8
-  _color: {fileID: 3285847797994280717}
+  _renderer: {fileID: 3285847797994280717}
   _chairs:
   - {fileID: 8345992697782970617}
   - {fileID: 4648989648038093847}

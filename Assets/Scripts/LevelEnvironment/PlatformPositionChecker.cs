@@ -4,6 +4,7 @@ using UnityEngine.Events;
 public class PlatformPositionChecker : MonoBehaviour
 {
     [SerializeField] private Transform _yobaPosition;
+    [SerializeField] private PlatformLauncher _launcher;
     public event UnityAction NewPlatformNeeding;
     private int _offset = -20;
 
@@ -16,7 +17,7 @@ public class PlatformPositionChecker : MonoBehaviour
     {
         if (collision.TryGetComponent(out Platform platform))
         {
-            NewPlatformNeeding?.Invoke();
+            _launcher.SpawnPlatform();
         }
     }
 

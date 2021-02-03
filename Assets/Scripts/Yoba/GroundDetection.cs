@@ -3,14 +3,13 @@ using UnityEngine.Events;
 
 public class GroundDetection : MonoBehaviour
 {
-    public event UnityAction GroundLost;
-    public event UnityAction GroundFound;   
+    public event UnityAction<bool> GroundedStatusChanged;      
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.TryGetComponent(out Platform platform))
         {
-            GroundFound?.Invoke();
+            GroundedStatusChanged?.Invoke(true);
         }
     }
 
@@ -18,7 +17,7 @@ public class GroundDetection : MonoBehaviour
     {
         if (collision.gameObject.TryGetComponent(out Platform platform))
         {
-            GroundLost?.Invoke();
+            GroundedStatusChanged?.Invoke(false);
         }
     }
 }
