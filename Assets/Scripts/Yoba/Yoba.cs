@@ -8,16 +8,13 @@ public class Yoba : MonoBehaviour
 {
     [SerializeField] private SpriteRenderer _image;
     [SerializeField] private DeathChecker _deathChecker;
-    [SerializeField] private Movement _mover;    
+    [SerializeField] private Movement _mover;
 
     private int _healthPoints = 5;
     private int _coins = 0;
-    private bool _alive = true;
 
     public event UnityAction<int, Coin> CoinCollected;
     public event UnityAction<int> HealthPointsChanged;
-
-    public bool Alive => _alive;
 
     private void OnEnable()
     {
@@ -31,7 +28,7 @@ public class Yoba : MonoBehaviour
 
     private void Update()
     {
-        _mover.Move();        
+        _mover.Move();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -60,7 +57,6 @@ public class Yoba : MonoBehaviour
 
     public void OnYobaDied()
     {
-        _alive = false;
         gameObject.SetActive(false);
     }
 }

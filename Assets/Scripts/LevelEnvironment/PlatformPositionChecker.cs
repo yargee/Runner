@@ -5,7 +5,7 @@ public class PlatformPositionChecker : MonoBehaviour
 {
     [SerializeField] private Transform _yobaPosition;
     [SerializeField] private PlatformLauncher _launcher;
-    public event UnityAction NewPlatformNeeding;
+    
     private int _offset = -20;
 
     private void Update()

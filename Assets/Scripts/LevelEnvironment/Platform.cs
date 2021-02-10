@@ -5,14 +5,13 @@ using UnityEngine;
 public class Platform : MonoBehaviour
 {
     [SerializeField] private SpriteRenderer _renderer;
-    [SerializeField] private List<Chair> _chairs;
-    [SerializeField] private List<Coin> _coins;
+    [SerializeField] private List<PlatformObject> _platformObjects;
+    
 
     private void OnEnable()
     {
         _renderer.color = Random.ColorHSV();
-        SetObjectsOnPlatform(_chairs);
-        SetObjectsOnPlatform(_coins);
+        SetObjectsOnPlatform(_platformObjects);        
     }
 
     public void Selfdestruct()
@@ -20,11 +19,18 @@ public class Platform : MonoBehaviour
         Destroy(gameObject);
     }
 
-    private void SetObjectsOnPlatform(IEnumerable<IPlatformPlaceble> list)
+    private void SetObjectsOnPlatform(List<PlatformObject> list)
     {
         foreach (var item in list)
         {
-            item.TryEnable();
+            if(item is Coin)
+            {
+                item.TryEnable(70);
+            }    
+            else
+            {
+                item.TryEnable(60);
+            }
         }
     }
 }

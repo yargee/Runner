@@ -34,8 +34,7 @@ public class Jumper : MonoBehaviour
     private void OnDisable()
     {
         _yobaInput.Disable();
-        _groundDetection.GroundedStatusChanged -= OnGroundedStatusChanged;
-        _yobaInput.Yoba.Jump.performed -= context => OnJumpPerformed();
+        _groundDetection.GroundedStatusChanged -= OnGroundedStatusChanged;        
     }
 
     private void OnGroundedStatusChanged(bool value)

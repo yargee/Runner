@@ -134,12 +134,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _renderer: {fileID: 3285847797994280717}
-  _chairs:
+  _platformObjects:
   - {fileID: 8345992697782970617}
   - {fileID: 4648989648038093847}
   - {fileID: 982559789416638660}
   - {fileID: 7810950679127974496}
-  _coins:
   - {fileID: 5411440706269739024}
   - {fileID: 4685571845705222322}
   - {fileID: 1156695411913133959}

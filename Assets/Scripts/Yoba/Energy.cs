@@ -21,12 +21,12 @@ public class Energy : MonoBehaviour
 
     private void OnEnable()
     {
-        _jumper.YobaJumped += OnJobaJumped;
+        _jumper.YobaJumped += OnYobaJumped;
     }
 
     private void OnDisable()
     {
-        _jumper.YobaJumped -= OnJobaJumped;
+        _jumper.YobaJumped -= OnYobaJumped;
     }
 
     private void Update()
@@ -38,7 +38,7 @@ public class Energy : MonoBehaviour
         }
     }
 
-    private void OnJobaJumped()
+    private void OnYobaJumped()
     {
         _value -= _energyCost;
         EnergyChanged?.Invoke(_value);
