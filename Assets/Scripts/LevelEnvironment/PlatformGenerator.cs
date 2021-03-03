@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class PlatformGenerator : MonoBehaviour
 {
@@ -9,13 +7,15 @@ public class PlatformGenerator : MonoBehaviour
 
     private int _maxPlatformHeight = 5;
     private int _minPlatformHeight = -4;
-    private int _offset = 37;    
+    private int _offset = 37;
 
     public void SpawnPlatform()
     {
-        Vector2 spawnPlace = new Vector2(_yobaPosition.position.x + _offset, transform.position.y + Random.Range(_minPlatformHeight, _maxPlatformHeight));
-        Instantiate(_template, spawnPlace, Quaternion.identity);
-    }     
+        int verticalOffset = Random.Range(_minPlatformHeight, _maxPlatformHeight);
+        Vector2 spawnPlace = new Vector2(_yobaPosition.position.x + _offset, transform.position.y + verticalOffset);
+        var newPlatform = Instantiate(_template, spawnPlace, Quaternion.identity);
+        newPlatform.ActivatePlatformObjects();
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {

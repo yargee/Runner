@@ -7,6 +7,7 @@ public class HealthView : MonoBehaviour
 {
     [SerializeField] private Image[] _health;
     [SerializeField] private Yoba _yoba;
+    private int index;
 
     private void OnEnable()
     {
@@ -18,8 +19,14 @@ public class HealthView : MonoBehaviour
         _yoba.HealthPointsChanged -= OnHealthPointsChanged;
     }
 
-    private void OnHealthPointsChanged(int healthPoints)
+    private void Start()
     {
-        _health[healthPoints].gameObject.SetActive(false);
+        index = _health.Length -1;
+    }
+
+    private void OnHealthPointsChanged()
+    {
+        _health[index].gameObject.SetActive(false);
+        index--;
     }
 }

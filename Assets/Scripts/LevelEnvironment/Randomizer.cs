@@ -6,7 +6,7 @@ public static class Randomizer
 {
     public static bool RandomChance(int chance)
     {
-        bool isEnabled = Random.Range(0, 100) < chance ? true : false;
-        return isEnabled;
+        bool result = Random.Range(0, 100) < chance ? true : false;
+        return result;
     }
 }

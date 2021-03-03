@@ -6,12 +6,10 @@ public class Platform : MonoBehaviour
 {
     [SerializeField] private SpriteRenderer _renderer;
     [SerializeField] private List<PlatformObject> _platformObjects;
-    
 
     private void OnEnable()
     {
         _renderer.color = Random.ColorHSV();
-        SetObjectsOnPlatform(_platformObjects);        
     }
 
     public void Selfdestruct()
@@ -19,17 +17,12 @@ public class Platform : MonoBehaviour
         Destroy(gameObject);
     }
 
-    private void SetObjectsOnPlatform(List<PlatformObject> list)
+    public void ActivatePlatformObjects()
     {
-        foreach (var item in list)
+        foreach (var item in _platformObjects)
         {
-            if(item is Coin)
             {
-                item.TryEnable(70);
-            }    
-            else
-            {
-                item.TryEnable(60);
+                item.TryEnable(item.SpawnChance);
             }
         }
     }

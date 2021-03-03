@@ -4,29 +4,30 @@ using UnityEngine.Events;
 [RequireComponent(typeof(SpriteRenderer))]
 [RequireComponent(typeof(DeathChecker))]
 [RequireComponent(typeof(Movement))]
+[RequireComponent(typeof(Health))]
+[RequireComponent(typeof(Inventory))]
 public class Yoba : MonoBehaviour
 {
     [SerializeField] private SpriteRenderer _image;
     [SerializeField] private DeathChecker _deathChecker;
     [SerializeField] private Movement _mover;
-
-    private int _healthPoints = 5;
-    private int _coins = 0;
-
+    [SerializeField] private Health _health;
+    [SerializeField] private Inventory _inventory;
+    
     public event UnityAction<int, Coin> CoinCollected;
-    public event UnityAction<int> HealthPointsChanged;
+    public event UnityAction HealthPointsChanged;
 
     private void OnEnable()
     {
-        _deathChecker.YobaDied += OnYobaDied;
+        _deathChecker.DeathPointReached += OnDeathPointReached;
     }
 
     private void OnDisable()
     {
-        _deathChecker.YobaDied -= OnYobaDied;
+        _deathChecker.DeathPointReached -= OnDeathPointReached;
     }
-
-    private void Update()
+    
+    private void FixedUpdate()
     {
         _mover.Move();
     }
@@ -35,14 +36,14 @@ public class Yoba : MonoBehaviour
     {
         if (collision.TryGetComponent(out Coin coin))
         {
-            _coins++;
-            CoinCollected?.Invoke(_coins, coin);
+            _inventory.CollectCoin();
+            CoinCollected?.Invoke(_inventory.Coins, coin);
         }
 
         if (collision.TryGetComponent(out Chair chair))
         {
-            _healthPoints--;
-            HealthPointsChanged?.Invoke(_healthPoints);
+            _health.TakeDamage(chair.Damage);
+            HealthPointsChanged?.Invoke();
             _image.color = Color.red;
         }
     }
@@ -55,8 +56,8 @@ public class Yoba : MonoBehaviour
         }
     }
 
-    public void OnYobaDied()
-    {
-        gameObject.SetActive(false);
+    public void OnDeathPointReached()
+    {        
+        _health.Die();
     }
 }

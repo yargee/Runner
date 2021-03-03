@@ -95,22 +95,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c3b3a8c69fb1254b8347bb793eedb43, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _startPosition: {fileID: 8839127980302770825}
-  CoinCollected:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 8461079273390145377, guid: 17afd42ae28317145b1132910c74a4b0,
-          type: 3}
-        m_MethodName: OnCoinCollected
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+  _spawnChance: 70
 --- !u!58 &-3415530479752382126
 CircleCollider2D:
   m_ObjectHideFlags: 0
